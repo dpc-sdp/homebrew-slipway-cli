@@ -40,17 +40,17 @@ cask "slipway-cli" do
     end
   end
 
-  version "0.14.5"
+  version "0.15.0"
 
   on_macos do
     on_intel do
-      sha256 "a4b5a3b7b32529ff6421e2e8d992be09226a5c995cbae8eb14979cb046463633"
+      sha256 "ab74219987a09e909edc3f614c85d0d11d18c684bb739ccf54536bde5665d843"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_darwin_amd64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
     end
     on_arm do
-      sha256 "db49e2f5558690ddb017d7850a5e1aeda8f491776db6d1d3fc936d6864c57ec4"
+      sha256 "314d26983018c2a1ac42a601958599546d401b8d8a28b70845c26a7287ea39c2"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_darwin_arm64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
@@ -59,13 +59,13 @@ cask "slipway-cli" do
 
   on_linux do
     on_intel do
-      sha256 "af86774996c3b4014fd16284b9971091f59f7ea587e85b40a1dbafe14a7ff6d1"
+      sha256 "22f3957d6c826008f24437c6457beca73ffac660da6f83671d3e01faedd4a3ec"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_linux_amd64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
     end
     on_arm do
-      sha256 "a67db4570b248165ffc5fad4e8f82fe0068b2751140467536c6ad262da126934"
+      sha256 "6e7566b9d5793a060c0dcbe5eac5d98519515fdb08af41a8c7cc49e92e6b6c1d"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_linux_arm64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
@@ -81,6 +81,12 @@ cask "slipway-cli" do
   end
 
   binary "slipway"
+
+  postflight do
+    if OS.mac?
+      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/slipway"]
+    end
+  end
 
   # No zap stanza required
 
