@@ -40,17 +40,17 @@ cask "slipway-cli" do
     end
   end
 
-  version "0.21.1"
+  version "0.22.0"
 
   on_macos do
     on_intel do
-      sha256 "22dc39f2ebfc1c4acdc508a46ee1d7c84ec8859756bf78467b513bea74f43fd6"
+      sha256 "5024148262260b48156c849041c86f57c14ffd9cb2ed83356b96d0ee919c9409"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_darwin_amd64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
     end
     on_arm do
-      sha256 "d52991cfab80c542d7c0e88472116bb16f17db3f33f4183d2b145e3cc54b7c38"
+      sha256 "8358f5274b14a37e2b0cfea7a2bf594f253bb9434b1a34f2d5054d35f76ad3a7"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_darwin_arm64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
@@ -59,13 +59,13 @@ cask "slipway-cli" do
 
   on_linux do
     on_intel do
-      sha256 "fc14af5a0cc27fcee0f7b82900143969c4c0584556482ef857a37f6db544b847"
+      sha256 "923bd49fc0cad69bbb167b356d9bd62895f0202d48f47fe1aac4663d8716200f"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_linux_amd64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
     end
     on_arm do
-      sha256 "c1fcab76c4a534435d191a542a0c2e32d372798d9e37405b59fee65ce33c19d5"
+      sha256 "5a4e36722a0481e396a3fe1996fc745bed580bcba1234d518343c77db824bdd0"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_linux_arm64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
