@@ -40,33 +40,32 @@ cask "slipway-cli" do
     end
   end
 
-  version "0.24.2"
+  version "0.25.0"
 
   on_macos do
-    on_intel do
-      sha256 "2e3c7acd7d6dc5f4ed4f3a1b07576b22acb7a049112cab379f5414ae486f5675"
-      url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_darwin_amd64.tar.gz",
-        verified: "github.com/dpc-sdp/slipway/",
-        using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    end
     on_arm do
-      sha256 "de1405bcc640a0eb74cba61ba4ff92724670a29375da1792fb09f08ceaf6f9b0"
+      sha256 "a49f48861f20c07fda0665559fa82c755efb01b3a2139df04d5679a580032a92"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_darwin_arm64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
     end
-  end
-
-  on_linux do
     on_intel do
-      sha256 "5727ec2c032b99fa66e9b29f3d4f9a74c2cd7b11cf8f58e678e2f15d45ff130a"
-      url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_linux_amd64.tar.gz",
+      sha256 "e391d7368e7f06c1cf9316f025dacd39b9ab004cda8f8906f3eca7b08d761dca"
+      url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_darwin_amd64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
     end
+  end
+  on_linux do
     on_arm do
-      sha256 "af50e67ce23d6a01565cb56bf0a6b5852d99fe269fafe0b179ab84764916c5ec"
+      sha256 "6501c7b9fc98b84cec7583a1ff9ab251727d0d411c03be9839956327c7fc6737"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_linux_arm64.tar.gz",
+        verified: "github.com/dpc-sdp/slipway/",
+        using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    end
+    on_intel do
+      sha256 "ec5657475e7a8be2f8349ae41aab7aa18a867ecb150f3950ee6cc61ab970c183"
+      url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_linux_amd64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
     end
@@ -89,5 +88,4 @@ cask "slipway-cli" do
   end
 
   # No zap stanza required
-
 end
