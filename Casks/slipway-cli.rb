@@ -40,17 +40,17 @@ cask "slipway-cli" do
     end
   end
 
-  version "0.27.0"
+  version "0.28.0"
 
   on_macos do
     on_arm do
-      sha256 "a8d0897f27c645e53e410b4dfef4c0b908865d9aa3bb1668e4965d4cfd16ec68"
+      sha256 "96da7f7a689056c24556605b048b889cfd7a905debbe2c8b89c1da40027097bf"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_darwin_arm64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
     end
     on_intel do
-      sha256 "cdc0788be592df17bdd9c3aa2b5c7011148492a78ebcd87aba19f7949abdfc7f"
+      sha256 "770af8033942ee323aa8f99ac3e8037047596e76014827dee849c2ef32a1b3e6"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_darwin_amd64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
@@ -58,13 +58,13 @@ cask "slipway-cli" do
   end
   on_linux do
     on_arm do
-      sha256 "0eecbb6cdbf84cedf935efcf02000775b4ae227076a552a0f5323bf0f4ae3ba9"
+      sha256 "7afd839e997f91c1203741871b40d2f9728a9d539358daa5668f0a9acc9c5a2f"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_linux_arm64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
     end
     on_intel do
-      sha256 "3eb1b073c999ac4bc024a825f418c1331fc7fb6c5eff11b1be1959792d7f737a"
+      sha256 "8ac6119d06d9e90924c840d6e1876ab04ba8ad884e88cc072d55d1e06810d50b"
       url "https://github.com/dpc-sdp/slipway/releases/download/v#{version}/slipway-cli_#{version}_linux_amd64.tar.gz",
         verified: "github.com/dpc-sdp/slipway/",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
@@ -80,11 +80,16 @@ cask "slipway-cli" do
   end
 
   binary "slipway"
+  binary "slipway-plugin-follow-run"
 
   postflight do
     if OS.mac?
       system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/slipway"]
+      system_command "/usr/bin/xattr",
+                     args: ["-dr", "com.apple.quarantine", "#{staged_path}/slipway-plugin-follow-run"]
     end
+    system_command "#{staged_path}/slipway",
+                   args: ["support", "plugin", "install", "#{staged_path}/slipway-plugin-follow-run", "--yes"]
   end
 
   # No zap stanza required
